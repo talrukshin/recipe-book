@@ -1,0 +1,320 @@
+.recipe-detail {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-5) var(--space-4) var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recipe-detail__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recipe-detail__actions {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--color-plum);
+  font-weight: 600;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: var(--space-1);
+}
+
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+.link-btn--danger {
+  color: var(--color-paprika);
+}
+
+.recipe-page {
+  position: relative;
+  background: var(--color-paper-raised);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lift);
+  padding: var(--space-7) var(--space-6) var(--space-6);
+  padding-top: calc(var(--space-6) + 10px);
+}
+
+.recipe-detail__fav {
+  position: absolute;
+  top: var(--space-5);
+  left: var(--space-5);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.recipe-detail__stamp {
+  width: 46px;
+  height: 46px;
+  font-size: var(--text-lg);
+  color: var(--color-ink-faint);
+  border-color: var(--color-ink-faint);
+  transition: color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+
+.recipe-detail__stamp--on {
+  color: var(--color-paprika);
+  border-color: var(--color-paprika);
+}
+
+.recipe-detail__image-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-5);
+  max-height: 340px;
+}
+
+.recipe-detail__image {
+  width: 100%;
+  height: 100%;
+  max-height: 340px;
+  object-fit: cover;
+  display: block;
+}
+
+.recipe-detail__header {
+  border-bottom: 1px dashed var(--color-brass);
+  padding-bottom: var(--space-5);
+  margin-bottom: var(--space-5);
+}
+
+.recipe-detail__category {
+  font-size: var(--text-sm);
+  color: var(--color-sage);
+  font-weight: 700;
+}
+
+.recipe-detail__header h1 {
+  font-size: var(--text-2xl);
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.recipe-detail__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  color: var(--color-ink-soft);
+  font-size: var(--text-sm);
+}
+
+.recipe-detail__link {
+  display: inline-block;
+  margin-top: var(--space-3);
+  color: var(--color-turmeric);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.recipe-detail__columns {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: var(--space-6);
+}
+
+.recipe-detail__ingredients h2,
+.recipe-detail__steps h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-3);
+}
+
+.recipe-detail__ingredients ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.recipe-detail__ingredients li {
+  color: var(--color-ink-soft);
+}
+
+.recipe-detail__ingredients li label {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  cursor: pointer;
+}
+
+.recipe-detail__ingredients li input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15em;
+  flex-shrink: 0;
+  accent-color: var(--color-sage);
+  cursor: pointer;
+}
+
+.recipe-detail__ingredients li.is-checked {
+  color: var(--color-ink-faint);
+}
+
+.recipe-detail__ingredients li.is-checked span {
+  text-decoration: line-through;
+  text-decoration-color: var(--color-ink-faint);
+}
+
+.recipe-detail__steps ol {
+  margin: 0;
+  padding-inline-start: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.recipe-detail__steps li {
+  padding-inline-start: var(--space-2);
+  color: var(--color-ink);
+  line-height: 1.7;
+}
+
+.recipe-detail__steps li::marker {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--color-paprika);
+}
+
+.recipe-detail__muted {
+  color: var(--color-ink-faint);
+  font-style: italic;
+}
+
+.recipe-detail__notes {
+  margin-top: var(--space-6);
+  padding-top: var(--space-5);
+  border-top: 1px dashed var(--color-brass);
+}
+
+.recipe-detail__notes h2 {
+  font-size: var(--text-lg);
+  margin-bottom: var(--space-2);
+}
+
+.recipe-detail__notes p {
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 640px) {
+  .recipe-detail__columns {
+    grid-template-columns: 1fr;
+  }
+  .recipe-page {
+    padding: var(--space-6) var(--space-4) var(--space-5);
+  }
+}
+
+/* ==========================================================================
+   Print — clean, ink-light recipe sheet: title, image, ingredients, steps.
+   No chrome, no colored backgrounds, wide margins for handwritten notes.
+   ========================================================================== */
+.print-notes {
+  display: none;
+}
+
+@media print {
+  .recipe-detail {
+    max-width: 100%;
+    padding: 0;
+    gap: 0;
+  }
+
+  .recipe-detail__toolbar,
+  .recipe-detail__fav,
+  .recipe-detail__link {
+    display: none !important;
+  }
+
+  .recipe-page {
+    background: #fff;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  .recipe-detail__header,
+  .recipe-detail__category,
+  .recipe-detail__header h1,
+  .recipe-detail__meta,
+  .recipe-detail__ingredients h2,
+  .recipe-detail__steps h2,
+  .recipe-detail__ingredients li,
+  .recipe-detail__steps li,
+  .recipe-detail__muted,
+  .recipe-detail__notes h2,
+  .recipe-detail__notes p {
+    color: #000 !important;
+  }
+
+  .recipe-detail__steps li::marker {
+    color: #000;
+  }
+
+  /* Always print as an empty box, regardless of on-screen checked state —
+     the printout is meant to be checked off by hand. */
+  .recipe-detail__ingredients li input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    margin-top: 0.2em;
+    border: 1.5px solid #000;
+    border-radius: 3px;
+    background: #fff;
+  }
+
+  .recipe-detail__ingredients li.is-checked span {
+    text-decoration: none;
+  }
+
+  .recipe-detail__image-wrap {
+    max-height: 220px;
+    border-radius: 0;
+    margin-bottom: var(--space-4);
+  }
+
+  .recipe-detail__image {
+    max-height: 220px;
+  }
+
+  .recipe-detail__columns {
+    gap: var(--space-5);
+  }
+
+  .print-notes {
+    display: block;
+    margin-top: var(--space-6);
+    break-inside: avoid;
+  }
+
+  .print-notes h2 {
+    font-size: var(--text-md);
+    color: #000 !important;
+    margin-bottom: var(--space-3);
+  }
+
+  .print-notes__lines {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .print-notes__lines span {
+    display: block;
+    border-bottom: 1px solid #000;
+    height: 1.4rem;
+  }
+}

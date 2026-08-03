@@ -1,0 +1,18 @@
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-8) var(--space-5);
+  color: var(--color-ink-faint);
+  text-align: center;
+}
+
+.empty-state svg {
+  color: var(--color-brass);
+}
+
+.empty-state p {
+  font-size: var(--text-md);
+  max-width: 26ch;
+}
